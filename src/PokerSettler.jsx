@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './styles.css';
 
 export default function PokerSettler() {
   const [players, setPlayers] = useState([
@@ -86,12 +85,12 @@ export default function PokerSettler() {
   };
 
   return (
-    <div className="container">
-      <h1 className="text-2xl font-bold mb-4">Poker Settlement Calculator</h1>
-      <div className="w-full max-w-xl flex flex-col gap-4">
+    <div className="container mx-auto min-h-screen flex flex-col items-center justify-center py-8 px-2">
+      <h1 className="text-4xl font-extrabold mb-8 text-white drop-shadow-lg text-center">Poker Settlement Calculator</h1>
+      <div className="w-full max-w-xl flex flex-col gap-6">
         {/* Players List */}
-        <div className="bg-white shadow-md rounded-2xl p-4 flex flex-col gap-4">
-          <h2 className="text-xl font-semibold">Players</h2>
+        <div className="bg-white/90 shadow-2xl rounded-3xl p-6 flex flex-col gap-4 backdrop-blur-md">
+          <h2 className="text-2xl font-semibold mb-2 text-gray-800">Players</h2>
           {players.map((player) => (
             <div
               key={player.id}
@@ -99,27 +98,27 @@ export default function PokerSettler() {
             >
               <input
                 type="text"
-                className="border rounded px-2 py-1"
+                className="border rounded-lg px-3 py-2 text-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
                 value={player.name}
                 onChange={(e) => handleChange(player.id, 'name', e.target.value)}
               />
               <input
                 type="number"
                 placeholder="Buy In"
-                className="border rounded px-2 py-1"
+                className="border rounded-lg px-3 py-2 text-lg focus:outline-none focus:ring-2 focus:ring-green-400 transition"
                 value={player.buyIn}
                 onChange={(e) => handleChange(player.id, 'buyIn', e.target.value)}
               />
               <input
                 type="number"
                 placeholder="Cash Out"
-                className="border rounded px-2 py-1"
+                className="border rounded-lg px-3 py-2 text-lg focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
                 value={player.cashOut}
                 onChange={(e) => handleChange(player.id, 'cashOut', e.target.value)}
               />
               <button
                 onClick={() => removePlayer(player.id)}
-                className="text-white bg-red-500 px-3 py-1 rounded-2xl"
+                className="text-white bg-red-500 hover:bg-red-600 px-3 py-2 rounded-2xl transition font-bold shadow"
               >
                 Remove
               </button>
@@ -127,7 +126,7 @@ export default function PokerSettler() {
           ))}
           <button
             onClick={addPlayer}
-            className="bg-blue-600 text-white px-3 py-2 rounded-2xl"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-2xl font-bold shadow transition"
           >
             + Add Player
           </button>
@@ -135,7 +134,7 @@ export default function PokerSettler() {
 
         {/* Calculate Button */}
         <button
-          className="bg-green-600 text-white px-4 py-2 rounded-2xl shadow"
+          className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-2xl shadow-lg font-bold text-lg transition"
           onClick={calculateSettlements}
         >
           Calculate Settlements
@@ -143,15 +142,15 @@ export default function PokerSettler() {
 
         {/* Transactions */}
         {transactions.length > 0 && (
-          <div className="bg-white shadow-md rounded-2xl p-4">
-            <h2 className="text-xl font-semibold mb-2">Settlements</h2>
-            <ul className="space-y-1">
+          <div className="bg-white/90 shadow-xl rounded-2xl p-6 backdrop-blur-md">
+            <h2 className="text-xl font-semibold mb-2 text-gray-800">Settlements</h2>
+            <ul className="space-y-2">
               {transactions.map((t, index) => (
-                <li key={index} className="flex items-center gap-2">
-                  <span className="font-semibold">{t.from}</span>
+                <li key={index} className="flex items-center gap-2 text-lg">
+                  <span className="font-semibold text-red-600">{t.from}</span>
                   <span>pays</span>
-                  <span className="font-semibold">{t.to}</span>
-                  <span>${t.amount}</span>
+                  <span className="font-semibold text-green-700">{t.to}</span>
+                  <span className="ml-2 bg-gray-200 rounded px-2 py-1 text-gray-800">${t.amount}</span>
                 </li>
               ))}
             </ul>
