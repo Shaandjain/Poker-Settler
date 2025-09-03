@@ -1,0 +1,44 @@
+.container {
+    min-height: 100vh;
+    background-color: #f3f4f6; /* Equivalent to Tailwind's bg-gray-100 */
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .button {
+    background-color: #22c55e; /* Green */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.1s;
+  }
+  
+  .button:hover {
+    background-color: #16a34a;
+    transform: scale(1.05);
+  }
+  
+  .button:active {
+    background-color: #15803d;
+    transform: scale(0.95);
+  }
+  
+  /* Make inputs and cards look better */
+  .input-field {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .card {
+    background: white;
+    padding: 16px
+  }  
+  
